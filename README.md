@@ -1,7 +1,7 @@
 # Assignment 4
 **Assignment and Code Blog entry due at 11:59pm on Monday, 5/22/2017**
 
-**Demo due by 11:59pm on Friday, 6/9/2017**
+**This assignment will not be demoed**
 
 The goal of this assignment is to start to use Node.js and some of its built-in modules to build a very simple web server that serves static content.
 
