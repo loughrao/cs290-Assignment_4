@@ -1,6 +1,12 @@
 var http = require("http");
 var fs = require('fs');
 
+
+var htmlContent = fs.readFileSync('public/index.html');
+var cssContent = fs.readFileSync('public/style.css');
+var jsContent = fs.readFileSync('public/index.js');
+var fourContent = fs.readFileSync('public/404.html');
+
 console.log("PORT:", process.env.PORT);
 
 function requestHandler(req, res) {
@@ -8,18 +14,36 @@ function requestHandler(req, res) {
   console.log("url:", req.url);
   console.log("headers:", req.headers);
 
-  // var radius = req.url.replace('/', '');
-  // console.log(radius);
-  // res.write("" + circle.area(radius));
-  // res.end();
-  var htmlContent = fs.readFileSync('public/index.html');
-
-
-  // res.statusCode = 200;
-  res.writeHead(200, {
-    "Content-Type": "text/html"
-  });
-  res.write(htmlContent);
+  if ((req.url == '/index.html') || (req.url == '/')) {
+    res.writeHead(200, {
+      "Content-Type": "text/html"
+    });
+    res.write(htmlContent);
+  }
+  else if (req.url == '/style.css') {
+    res.writeHead(200, {
+      "Content-Type": "text/css"
+    });
+    res.write(cssContent);
+  }
+  else if (req.url == '/index.js') {
+    res.writeHead(200, {
+      "Content-Type": "text/js"
+    });
+    res.write(jsContent);
+  }
+  else if (req.url == '/404.html') {
+    res.writeHead(200, {
+      "Content-Type": "text/html"
+    });
+    res.write(fourContent);
+  }
+  else {
+    res.writeHead(404, {
+      "Content-Type": "text/html"
+    });
+    res.write(fourContent);
+  }
   res.end();
 }
 
