@@ -1,3 +1,6 @@
+// Name: Owen Loughran
+// Username: loughrao
+// Student ID Number: 932-455-572
 var http = require("http");
 var fs = require('fs');
 
